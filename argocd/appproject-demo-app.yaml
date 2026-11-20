@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: demo-app
+  namespace: openshift-gitops
+spec:
+  description: Quarkus demo app (gitops-demo tutorial)
+  sourceRepos:
+    - https://github.com/ninhomilton/demo-gitops.git
+  destinations:
+    - server: https://kubernetes.default.svc
+      namespace: demo-dev
+    - server: https://kubernetes.default.svc
+      namespace: demo-prod
+  clusterResourceWhitelist: []
+  namespaceResourceWhitelist:
+    - group: apps
+      kind: Deployment
+    - group: ""
+      kind: Service
+    - group: route.openshift.io
+      kind: Route

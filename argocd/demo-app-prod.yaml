@@ -4,7 +4,7 @@ metadata:
   name: demo-app-prod
   namespace: openshift-gitops
 spec:
-  project: default
+  project: demo-app
   source:
     repoURL: https://github.com/ninhomilton/demo-gitops.git
     targetRevision: main
